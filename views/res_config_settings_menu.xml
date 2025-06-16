@@ -1,0 +1,29 @@
+<odoo>
+  <!-- Acción para abrir configuración de VeriFactu en res.config.settings -->
+  <record id="action_verifactu_config" model="ir.actions.act_window">
+    <field name="name">Configuración XSD VeriFactu</field>
+    <field name="res_model">res.config.settings</field>
+    <field name="view_mode">form</field>
+    <field name="target">inline</field>
+  </record>
+
+  <!-- Menú raíz de VeriFactu -->
+  <menuitem id="menu_verifactu_root"
+            name="VeriFactu"
+            parent="account.menu_finance"
+            sequence="100"/>
+
+  <!-- Submenú Firmas -->
+  <menuitem id="menu_verifactu_signatures"
+            name="Firmas Electrónicas"
+            parent="menu_verifactu_root"
+            action="action_verifactu_signatures"
+            sequence="10"/>
+
+  <!-- Submenú Configuración XSD -->
+  <menuitem id="menu_verifactu_xsd_config"
+            name="Subir XSD"
+            parent="menu_verifactu_root"
+            action="action_verifactu_config"
+            sequence="20"/>
+</odoo>

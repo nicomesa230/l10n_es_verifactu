@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo VeriFactu AEAT - Odoo 16</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <h1>Módulo VeriFactu para AEAT (Odoo 16)</h1>
+    
+    <p>Este módulo permite integrar el sistema VeriFactu de la Agencia Tributaria (AEAT) con Odoo 16, cumpliendo con la normativa de envío de registros de facturación de forma automática y segura.</p>
+    
+    <h2>Características</h2>
+    <ul class="features">
+        <li>Genera el hash de cada factura según las especificaciones de la AEAT</li>
+        <li>Genera el QR requerido para el control de la factura</li>
+        <li>Crea el XML conforme al esquema oficial de VeriFactu</li>
+        <li>Permite el envío automatizado de las facturas a la AEAT</li>
+        <li>Almacena y muestra el estado de envío de cada factura</li>
+        <li>Bloquea modificaciones en facturas ya enviadas a la AEAT</li>
+        <li>Compatible con Odoo 16.0</li>
+    </ul>
+    
+    <h2>Instalación</h2>
+    <ol>
+        <li>Descargue e instale el módulo como cualquier otro módulo de Odoo</li>
+        <li>Reinicie el servidor de Odoo</li>
+        <li>Actualice la lista de módulos</li>
+        <li>Instale el módulo desde el backend de Odoo</li>
+    </ol>
+    
+    <h2>Configuración</h2>
+    <p>Tras la instalación, configure los datos necesarios del certificado digital y los parámetros de conexión con la AEAT desde el menú de ajustes técnicos.</p>
+    
+    <h2>Nota para desarrolladores</h2>
+    <p>El módulo implementa el envío mediante SOAP/XML firmado y validado según las directrices de la AEAT. El código es fácilmente ampliable para otras versiones o integraciones.</p>
+    
+    <h2>Soporte</h2>
+    <p>Para soporte, incidencias o solicitudes de nuevas funcionalidades, por favor contacte al mantenedor del módulo.</p>
+    
+    <p><strong>Licencia:</strong> LGPL-3</p>
+</body>
+</html>

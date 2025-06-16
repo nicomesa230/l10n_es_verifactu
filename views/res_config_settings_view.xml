@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_config_settings_verifactu" model="ir.ui.view">
+        <field name="name">res.config.settings.verifactu</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]/*[hasclass('app_settings_block')][1]" position="before">
+                <div class="app_settings_block" data-string="VeriFactu" string="VeriFactu">
+                    <h2 class="mt16">VeriFactu</h2>
+
+                    <!-- Único bloque -->
+                    <div class="row mt16">
+                        <!-- Selector de archivo ya cargado -->
+                        <div class="col-12 col-lg-12">
+                            <div class="card p-3">
+                                <div class="form-group">
+                                    <label for="verifactu_xsd_attachment_id" class="col-form-label">
+                                        Archivo XSD VeriFactu
+                                    </label>
+                                    <field name="verifactu_xsd_attachment_id" class="o_form_field"/>
+
+                                    <!-- Botón que abre la pantalla de archivos adjuntos -->
+                                    <div class="mt-3">
+                                        <button name="action_open_attachments"
+                                                type="object"
+                                                string="Subir o gestionar archivo adjunto"
+                                                class="btn btn-outline-primary mt-3">
+                                            <i class="fa fa-paperclip" aria-hidden="true"/> Subir o gestionar archivo adjunto
+                                        </button>
+                                    </div>
+
+                                    <!-- Información del archivo actual -->
+                                    <div class="mt-2 alert alert-success"
+                                         attrs="{'invisible': [('verifactu_xsd_attachment_id', '=', False)]}">
+                                        <i class="fa fa-check-circle me-1"/>
+                                        <strong>Archivo XSD configurado correctamente</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

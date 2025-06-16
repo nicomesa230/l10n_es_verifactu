@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <record id="action_verifactu_signatures" model="ir.actions.act_window">
+      <field name="name">Firmas VeriFactu</field>
+      <field name="res_model">verifactu.signature</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p>Consulta aquí las firmas electrónicas generadas para las facturas enviadas a la AEAT.</p>
+      </field>
+    </record>
+
+    <menuitem id="menu_verifactu_root"
+              name="VeriFactu"
+              parent="account.menu_finance"
+              sequence="100"/>
+
+    <menuitem id="menu_verifactu_signatures"
+              name="Firmas Electrónicas"
+              parent="menu_verifactu_root"
+              action="action_verifactu_signatures"
+              sequence="10"/>
+    </data>
+</odoo>

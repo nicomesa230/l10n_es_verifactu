@@ -1,0 +1,35 @@
+<odoo>
+  <record id="view_verifactu_signature_tree" model="ir.ui.view">
+    <field name="name">verifactu.signature.tree</field>
+    <field name="model">verifactu.signature</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="move_id"/>
+        <field name="verifactu_signature_date"/>
+        <field name="verifactu_digest_value"/>
+        <field name="verifactu_signature_algorithm"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_verifactu_signature_form" model="ir.ui.view">
+    <field name="name">verifactu.signature.form</field>
+    <field name="model">verifactu.signature</field>
+    <field name="arch" type="xml">
+      <form string="Firma Electrónica">
+        <sheet>
+          <group>
+            <field name="move_id"/>
+            <field name="verifactu_signature_date"/>
+            <field name="verifactu_signature_value"/>
+            <field name="verifactu_x509_certificate"/>
+            <field name="verifactu_digest_value"/>
+            <field name="verifactu_signature_algorithm"/>
+            <field name="verifactu_signed_info"/>
+            <field name="verifactu_reference_uri"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>
