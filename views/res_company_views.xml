@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_verifactu" model="ir.ui.view">
+        <field name="name">res.company.form.verifactu</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="VeriFactu">
+                    <group>
+                        <field name="verifactu_cert_pem" widget="text"/>
+                        <field name="verifactu_key_pem" widget="text"/>
+                        <field name="verifactu_key_password" password="True"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

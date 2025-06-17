@@ -17,6 +17,12 @@
     <field name="model">verifactu.signature</field>
     <field name="arch" type="xml">
       <form string="Firma Electrónica">
+        <header>
+          <button name="generate_and_sign"
+                  type="object"
+                  string="Firmar XML"
+                  class="btn-primary"/>
+        </header>
         <sheet>
           <group>
             <field name="move_id"/>

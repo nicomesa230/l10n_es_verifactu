@@ -8,3 +8,4 @@ from . import action_generate_xml
 from . import verifactu_signature_model
 from . import res_config_settings
 from . import verifactu_json
+from . import res_company_extension

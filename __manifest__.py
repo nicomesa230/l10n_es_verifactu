@@ -18,6 +18,7 @@
         'views/verifactu_signature_menu.xml',
         'views/res_config_settings_view.xml',
         'views/res_config_settings_menu.xml',
+        'views/res_company_views.xml',
     ],
     'images': ['static/description/icon.png'],
     'installable': True,
