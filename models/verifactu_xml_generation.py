@@ -118,7 +118,7 @@ class VeriFactuXMLGeneration(models.Model):
                         if t['id'] == tax.id:
                             tax_amount += Decimal(str(t['amount']))
                     tax_amount = tax_amount.quantize(Decimal('0.00'), rounding=ROUND_HALF_UP)
-                    total_cuota += tax_amount  # Sumamos al total
+                    total_cuota += tax_amount  
                 except Exception as e:
                     _logger.warning("Error al calcular impuesto %s: %s", tax.name, str(e))
                     tax_amount = Decimal('0.00')

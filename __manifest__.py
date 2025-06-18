@@ -8,7 +8,7 @@
     incluir un código QR con datos clave y preparar el sistema para el envío a la AEAT conforme a la normativa española.
     """,
     'author': 'Nico Mesa',
-    'website': 'https://github.com/nicomesa230',
+    'website': 'https://github.com/nicomesa230/l10n_es_verifactu',
     'depends': ['account','web','base'],
     'data': [
         'security/ir.model.access.csv',
@@ -19,6 +19,7 @@
         'views/res_config_settings_view.xml',
         'views/res_config_settings_menu.xml',
         'views/res_company_views.xml',
+        'views/verifactu_status_wizard.xml',
     ],
     'images': ['static/description/icon.png'],
     'installable': True,

@@ -2,15 +2,28 @@ from odoo import models, fields, _
 from odoo.exceptions import UserError
 import os
 from lxml import etree
+import html
 
 class VeriFactuStatusViews(models.Model):
     _inherit = 'account.move'
 
     # Campos para almacenar el estado y respuesta de VeriFactu
     def action_send_verifactu(self):
+
         for invoice in self:
-            if invoice.verifactu_state == 'accepted':
-                continue
+
+            if invoice.state != 'posted':
+                raise UserError(_(
+                    "❌ No puedes enviar esta factura a la AEAT porque no ha sido confirmada.\n\n"
+                    "Posibles causas:\n"
+                    "1. La factura está en estado 'Borrador'\n"
+                    "2. La factura ha sido cancelada\n\n"
+                    "✅ Solución:\n"
+                    "Asegúrate de que la factura esté en estado 'Confirmada' antes de enviarla."
+                ))
+
+            if invoice.verifactu_state in ['accepted', 'partially_accepted']:
+                raise UserError(_("Esta factura ya fue enviada a la AEAT y aceptada. No es posible reenviarla."))
 
             missing_fields = []
             if not invoice.name: missing_fields.append("Número de factura")
@@ -48,25 +61,29 @@ class VeriFactuStatusViews(models.Model):
     # Acción para ver el estado de VeriFactu
     def action_view_verifactu_status(self):
         self.ensure_one()
+
         if not self.verifactu_sent:
-            raise UserError(_("La factura aún no ha sido enviada a la AEAT."))
-        msg = f"<b>Estado AEAT:</b> {self.verifactu_state.upper()}<br/>..."
+            raise UserError(_(
+                "❌ No puedes revisar el estado de la AEAT\n\n"
+                "Posibles causas:\n"
+                "1. La factura está en estado 'Borrador'\n"
+                "2. La factura ha sido cancelada\n"
+                "3. No accionaste el botón enviar AEAT\n\n"
+                "✅ Solución:\n"
+                "Asegúrate de que la factura esté en estado 'Confirmada' y después acciona el botón enviar AEAT para revisar el estado de esta factura en vivo."
+            ))
+
+        wizard = self.env['verifactu.status.wizard'].create({
+            'status': self.verifactu_state,
+            'sent_date': self.verifactu_sent_date,
+        })
+        wizard.set_response(self.verifactu_response or "No contestado")
+
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Estado AEAT',
-            'res_model': 'account.move',
-            'res_id': self.id,
+            'name': 'Estado del envío a la AEAT',
+            'res_model': 'verifactu.status.wizard',
+            'res_id': wizard.id,
             'view_mode': 'form',
             'target': 'new',
-            'views': [(False, 'form')],
-            'context': self.env.context,
-            'effect': {
-                'fadeout': 'slow',
-                'message': 'Estado cargado correctamente',
-                'type': 'rainbow_man'
-            },
-            'warning': {
-                'title': f"Estado AEAT: {self.verifactu_state.upper()}",
-                'message': msg,
-            },
         }

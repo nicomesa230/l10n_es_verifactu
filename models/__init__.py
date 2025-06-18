@@ -9,3 +9,4 @@ from . import verifactu_signature_model
 from . import res_config_settings
 from . import verifactu_json
 from . import res_company_extension
+from . import verifactu_status_wizard
